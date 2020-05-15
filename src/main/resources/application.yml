@@ -1,0 +1,16 @@
+logging:
+  level:
+    org.springframework: ERROR
+    com.sinaure: DEBUG
+
+spring:
+  profiles:
+    active: dev
+  
+---
+ontologies:
+  gtfs:
+    - ontologies/gtfs/gtfs.ttl
+  transmodel:
+    - ontologies/transmodel/tm-commons.owl
+    - ontologies/transmodel/tm-journeys.owl
