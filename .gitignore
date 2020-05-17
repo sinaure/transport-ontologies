@@ -6,3 +6,5 @@ target/
 .idea
 .iml
 .xz
+*.jar
+docker/neo4j/data
