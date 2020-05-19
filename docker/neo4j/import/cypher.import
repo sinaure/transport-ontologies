@@ -1,0 +1,21 @@
+MATCH (resource:Resource) DETACH DELETE resource;
+MATCH (resource:_NsPrefDef) DETACH DELETE resource;
+call n10s.graphconfig.init( );
+CALL n10s.graphconfig.set({ handleVocabUris: "SHORTEN" , handleRDFTypes: "LABELS_AND_NODES"});
+
+CALL n10s.nsprefixes.add("gtfs", "http://vocab.gtfs.org/terms#");
+CALL n10s.nsprefixes.add("transmodel_facilities", "https://w3id.org/transmodel/facilities#");
+CALL n10s.nsprefixes.add("transmodel_journeys", "https://w3id.org/transmodel/journeys#");
+
+call n10s.onto.import.fetch( "file:///import/ontologies/gtfs/gtfs.ttl",
+                            "Turtle");
+call n10s.onto.import.fetch( "file:///import/ontologies/transmodel/tm-commons.owl",
+                            "RDF/XML");
+call n10s.onto.import.fetch( "file:///import/ontologies/transmodel/tm-facilities.owl",
+                            "RDF/XML");
+call n10s.onto.import.fetch( "file:///import/ontologies/transmodel/tm-fares.owl",
+                            "RDF/XML");  
+call n10s.onto.import.fetch( "file:///import/ontologies/transmodel/tm-journeys.owl",
+                            "RDF/XML");  
+call n10s.onto.import.fetch( "file:///import/ontologies/transmodel/tm-organizations.owl",
+                            "RDF/XML");         
